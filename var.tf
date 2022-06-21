@@ -1,28 +1,50 @@
 variable "region" {
-    description = "region for setup"
+    description = "Default Region"
     default = "ap-south-1"
 }
-variable "ami" {
-    description = "ami id "
-    default = "ami-068257025f72f470d" 
+variable "secret_key" {
+    description = "secrect_key"
+    default = ""
 }
-variable "instance_type" {
-    description = "instance type"
-    default = "t2.micro"
+variable "access_key" {
+    description = "access key"
+    default = ""
 }
 variable "vpc_cidr" {
-    description = "cidr for vpc"
+    description = "vpc_cidr"
     default = "192.168.0.0/16"
 }
 variable "public_cidr" {
-    description = "cidr for public subnet"
+    description = "public cidr"
     default = "192.168.0.0/24"
 }
-variable "private_cidr" {
-    description = "cidr for private subnet"
-    default = "192.168.12.0/24"
+variable "public_az" {
+    description = "public cidr"
+    default = "ap-south-1a"
 }
-variable "key_path" {
-  description = "SSH Public Key path"
-  default = "~/.ssh/id_rsa.pub"
+variable "public_cidr2" {
+    description = "public cidr2"
+    default = "192.168.25.0/24"
+}
+variable "public_az2" {
+    description = "public cidr"
+    default = "ap-south-1b"
+}
+
+variable "private_cidr" {
+    description = "private cidr"
+    default = "192.168.50.0/24"
+}
+variable "private_az" {
+    description = "private az"
+    default = "ap-south-1b"
+  
+}
+variable "ami" {
+    description = "ami_id"
+    default = "ami-096b9cd38d837f984"
+}
+variable "instance_type" {
+    default = "t2.micro"
+    description = "instance type"
 }
