@@ -43,21 +43,21 @@
         "Name" = "igw"
       }
   }
-  resource "aws_route_table" "PublicRT" {
-      vpc_id = "$(aws_vpc.myvpc.id)"
-      route = {
-        cidr_block = "0.0.0.0/0"
-        gateway_id = aws_internet_gateway.igw.id
-      }
-      tags = {
-        "Name" = "Public_rt"
-      }
+  resource "aws_route_table" "public_rt" {
+    vpc_id = aws_vpc.myvpc.id
+    route {
+      cidr_block = "0.0.0.0/0"
+      gateway_id = aws_internet_gateway.igw.id
+    }
+    tags = {
+      Name = "publicRouteTable"
+    }
   }
-  resource "aws_route_table_association" "routesub"{
-      subnet_id =  "{$aws_subnet.public.id}"
-      route_table_id = "${aws_route_table.PublicRT.id}"
+  resource "aws_route_table_association" "a" {
+    count = length(var.subnets_cidr)
+    subnet_id      = ["{$aws_subnet.public.id}", "{$aws_subnet.public.id}"]
+    route_table_id = aws_route_table.public_rt.id
   }
-
   resource "aws_security_group" "mysg" {
       vpc_id = "{$aws_vpc.myvpc.id}"
       ingress {

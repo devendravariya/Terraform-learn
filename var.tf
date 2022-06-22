@@ -48,3 +48,7 @@ variable "instance_type" {
     default = "t2.micro"
     description = "instance type"
 }
+variable "subnets_cidr" {
+    type = list
+    default = ["192.168.0.0/24", "192.168.25.0/24"]
+}
