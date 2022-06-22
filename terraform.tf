@@ -55,7 +55,7 @@
   }
   resource "aws_route_table_association" "a" {
     count = length(var.subnets_cidr)
-    subnet_id = "{$aws_subnet.public.id}"
+    subnet_id = ""aws_subnet.public.id"
     route_table_id = aws_route_table.public_rt.id
   }
   resource "aws_security_group" "mysg" {
@@ -97,7 +97,7 @@
   resource "aws_instance" "server" {
       ami = var.ami
       instance_type = var.instance_type
-      subnet_id = "{$aws_subnet.public.id}"
+      subnet_id = ""aws_subnet.public.id"
       key_name = "{$aws_key_pair.myKey.id}"
       user_data = "${file("apache_config.sh")}"
   }
@@ -131,7 +131,7 @@
   resource "aws_alb" "alb" {
     name            = "my-lb"
     security_groups = ["${aws_security_group.alb.id}"]
-    subnets         = ["{$aws_subnet.public.id}", "{$aws_subnet.public2.id}"]
+    subnets         = [""aws_subnet.public.id", "aws_subnet.public2.id"]
   }
   resource "aws_alb_target_group" "group" {
     name     = "alb-tgt"
