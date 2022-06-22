@@ -30,7 +30,7 @@
       }
   }
   resource "aws_subnet" "private" {
-      vpc_id = "$(aws_vpc.devendra.id)"
+      vpc_id = "{$aws_vpc.devendra.id}"
       cidr_block = var.private_cidr
       availability_zone = var.private_az
       tags = {
@@ -38,7 +38,7 @@
       }
   }
   resource "aws_internet_gateway" "igw" {
-      vpc_id = "$(aws_vpc.devendra.id)"
+      vpc_id = "{$aws_vpc.devendra.id}"
       tags = {
         "Name" = "igw"
       }
