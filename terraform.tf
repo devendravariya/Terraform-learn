@@ -22,7 +22,7 @@ resource "aws_subnet" "public" {
 }
 resource "aws_subnet" "public2" {
     vpc_id = "$(aws_vpc.myvpc.id)"
-    cidr_block = var.public2_cidr
+    cidr_block = var.public_cidr2
     availability_zone = var.public_az2
     map_public_ip_on_launch = "true"
     tags = {
@@ -53,7 +53,7 @@ resource "aws_route_table" "PublicRT" {
       "Name" = "Public_rt"
     }
 }
-resource "aws_route_table_association" "subnet aws_route_table_association"{
+resource "aws_route_table_association" "routesub"{
     subnet_id =  "{$aws_subnet.public.id}"
     route_table_id = "${aws_route_table.PublicRT.id}"
 }
@@ -66,7 +66,7 @@ resource "aws_route_table" "PrivateRT" {
       "Name" = "Private_rt"
     }
 }
-resource "aws_route_table_association" "subnet aws_route_table_association"{
+resource "aws_route_table_association" "routeassociat"{
     subnet_id =  "{$aws_subnet.public.id}"
     route_table_id = "${aws_route_table.PrivateRT.id}"
 }  
@@ -94,13 +94,13 @@ resource "aws_security_group" "mysg" {
       "Name" = "mysg"
     }
 }
-resource "tls_private_key" "pk" {
+resource "tls_private_key" "mykey" {
   algorithm = "RSA"
   rsa_bits  = 4096
 }
 resource "aws_key_pair" "myKey" {
   key_name   = "myKey"     
-  public_key = tls_private_key.myKey.public_key_openssh
+  public_key = tls_private_key.mykey.public_key_openssh
 
   provisioner "local-exec" { 
     command = "echo '${tls_private_key.mykey.private_key_pem}' > ./myKey.pem"
