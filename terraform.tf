@@ -3,7 +3,7 @@
     secret_key = var.secret_key
     access_key = var.access_key
   }
-  resource "aws_vpc" "myvpc" {
+  resource "aws_vpc" "devendra" {
       cidr_block = var.vpc_cidr
       enable_dns_support = "true"
       enable_dns_hostnames = "true"
@@ -12,7 +12,7 @@
       }
   }
   resource "aws_subnet" "public" {
-  vpc_id = "{$aws_vpc.myvpc.id}"
+      vpc_id = aws_vpc.devendra.id
       cidr_block = var.public_cidr
       availability_zone = var.public_az
       map_public_ip_on_launch = "true"
@@ -44,7 +44,7 @@
       }
   }
   resource "aws_route_table" "public_rt" {
-    vpc_id = aws_vpc.myvpc.id
+    vpc_id = aws_vpc.devendra.id
     route {
       cidr_block = "0.0.0.0/0"
       gateway_id = aws_internet_gateway.igw.id
@@ -104,7 +104,7 @@
   resource "aws_security_group" "alb" {
     name        = "my-lb"
     description = "Terraform load balancer security group"
-    vpc_id      = "${aws_vpc.myvpc.id}"
+    vpc_id      = "${aws_vpc.devendra.id}"
 
     ingress {
       from_port   = 443
@@ -137,7 +137,7 @@
     name     = "alb-tgt"
     port     = 80
     protocol = "HTTP"
-    vpc_id   = "${aws_vpc.myvpc.id}"
+    vpc_id   = "${aws_vpc.devendra.id}"
     health_check {
       path = "/"
       port = 80
