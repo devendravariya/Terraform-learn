@@ -55,7 +55,7 @@
   }
   resource "aws_route_table_association" "a" {
     count = length(var.subnets_cidr)
-    subnet_id      = ["{$aws_subnet.public.id}", "{$aws_subnet.public.id}"]
+    subnet_id = "{$aws_subnet.public.id}"
     route_table_id = aws_route_table.public_rt.id
   }
   resource "aws_security_group" "mysg" {
