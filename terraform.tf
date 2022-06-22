@@ -104,7 +104,7 @@
   resource "aws_security_group" "alb" {
     name        = "my-lb"
     description = "Terraform load balancer security group"
-    vpc_id      = "${aws_vpc.devendra.id}"
+    vpc_id      = aws_vpc.devendra.id
 
     ingress {
       from_port   = 443
@@ -137,7 +137,7 @@
     name     = "alb-tgt"
     port     = 80
     protocol = "HTTP"
-    vpc_id   = "${aws_vpc.devendra.id}"
+    vpc_id   = aws_vpc.devendra.id
     health_check {
       path = "/"
       port = 80
