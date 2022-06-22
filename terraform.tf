@@ -8,7 +8,7 @@
       enable_dns_support = "true"
       enable_dns_hostnames = "true"
       tags = {
-        "Name" = "myvpc"
+        "Name" = "devenddra"
       }
   }
   resource "aws_subnet" "public" {
@@ -21,7 +21,7 @@
       }
   }
   resource "aws_subnet" "public2" {
-      vpc_id = "{$aws_vpc.myvpc.id}"
+      vpc_id = "{$aws_vpc.devendra.id}"
       cidr_block = var.public_cidr2
       availability_zone = var.public_az2
       map_public_ip_on_launch = "true"
@@ -30,7 +30,7 @@
       }
   }
   resource "aws_subnet" "private" {
-      vpc_id = "$(aws_vpc.myvpc.id)"
+      vpc_id = "$(aws_vpc.devendra.id)"
       cidr_block = var.private_cidr
       availability_zone = var.private_az
       tags = {
@@ -38,7 +38,7 @@
       }
   }
   resource "aws_internet_gateway" "igw" {
-      vpc_id = "$(aws_vpc.myvpc.id)"
+      vpc_id = "$(aws_vpc.devendra.id)"
       tags = {
         "Name" = "igw"
       }
@@ -59,7 +59,7 @@
     route_table_id = aws_route_table.public_rt.id
   }
   resource "aws_security_group" "mysg" {
-      vpc_id = "{$aws_vpc.myvpc.id}"
+      vpc_id = "{$aws_vpc.devendra.id}"
       ingress {
           from_port = 80
           to_port = 80
