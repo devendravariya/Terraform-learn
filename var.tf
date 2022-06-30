@@ -1,37 +1,17 @@
-#####################################################
-# VPC Requirement
-#####################################################
-
-variable "custom_vpc" {
-  description = "VPC for testing environment"
-  type        = string
-  default     = "192.168.0.0/16"
+variable "ami" {
+    default = "ami-0756a1c858554433e"
 }
-
-#####################################################
-# EC2 Requirement
-#####################################################
-
-variable "instance_tenancy" {
-  description = "it defines the tenancy of VPC. Whether it's defsult or dedicated"
-  type        = string
-  default     = "default"
-}
-
-variable "ami_id" {
-  description = "ami id"
-  type        = string
-  default     = "ami-0756a1c858554433e"
-}
-
 variable "instance_type" {
-  description = "Instance type to create an instance"
-  type        = string
-  default     = "t2.micro"
-}
+    default = "t2.micro"
 
-variable "ssh_private_key" {
-  description = "pem file of Keypair we used to login to EC2 instances"
-  type        = string
-  default     = "local-1"
+}
+variable "region" {
+    default ="ap-south-1"
+}
+variable "access" {
+    default = ""
+}
+variable "secret" {
+    default = ""
+  
 }
