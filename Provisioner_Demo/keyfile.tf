@@ -1,0 +1,5 @@
+resource "aws_key_pair" "key" {
+    key_name = "mykey"
+    public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDB34nKR6+pAUF5Qv/AHEGOu20Y2eQOxxeMIhpSQKOQSek5Zjr8vCjFWWmNJZBaEGhC/u/BvOQEI2ZtlPwAAgTgQj7SFrWCM/l19lQsKyf8+Lj5CoSDWdQxLy703WIhX4lMZj2Xfi2AnogXHQN3r+UmWAokL4o47wjSCQGQ9NAoT4BPcvQL+hM6FA+1+uJNqwIIIpuXlEScVxu7c/xtcDhNL4ihIrCZdQRNveD6EoImlRetVUHhIqccy17CHj694wLDaSRUe/vZoD690u/Lh6umRo/2GTrJq5wrgVKsWKl4LsTzqNjXZKW43XjPNHD0ddPx5fJuX/uGp6O5qg3NJ59wFxB2a5zYH8OerGF29rD2mBngfXFWpSmUJj2z2C6an5F1WOfgjxjCFMl4CVFHncf+pAbfoEWSaP+q3gKhz80fO2xI/ZVvT0QZYRERZZXl5hrphMVLE80oaI8vYPJ68t/S+6pyAaR2pz7dcxE+rihc+K7bElpwVJmC4nLQxdclOZc= root@dev"
+  
+}
