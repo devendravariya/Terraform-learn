@@ -5,6 +5,6 @@ data "aws_vpc" "main" {
 
 
 data "template_file" "user-data" {
-    template = file("./userdata.yaml")
+    template = file("")
   
 }
