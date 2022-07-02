@@ -3,7 +3,7 @@
   instance_type = "t2.micro"
   key_name = "${aws_key_pair.key.key_name}"
   vpc_security_group_ids = ["aws_security_group.sg.id"]
-  user_data = "${file("install_apache.sh")}"
+  user_data = "${file("./install_apache.sh")}"
   tags = {
     Name = "web-server"
   }
