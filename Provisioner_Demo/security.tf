@@ -1,9 +1,9 @@
 resource "aws_security_group" "allow_tls" {
   name        = "allow_tls"
   description = "Allow TLS inbound traffic"
-  vpc_id      = data.aws_vpc.main
+  vpc_id      = data
 
-ingress = [ {
+ingress = [ {  #rules
     description      = "TLS from VPC"
     from_port        = 443
     to_port          = 443
